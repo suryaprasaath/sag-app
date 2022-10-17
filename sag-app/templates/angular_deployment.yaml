@@ -1,0 +1,28 @@
+apiVersion: {{ .Values.apiversion }}
+kind: Deployment
+metadata:
+  name: {{ .Values.app_frontend_name}}-dep
+  labels:
+{{ toYaml .Values.frontend_labels | indent 4 }}  
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+{{ toYaml .Values.frontend_labels | indent 6 }}
+  template:
+    metadata:
+      labels:
+{{ toYaml .Values.frontend_labels | indent 8 }}
+    spec:
+      containers:
+      - name: {{ .Values.app_frontend_name}}-container
+        image: {{ .Values.frontend_imageTag }}
+        ports:
+          - containerPort: {{ .Values.frontend_cont_port }}
+        resources:
+          requests:
+            cpu: "{{ .Values.req_cpu }}"
+            memory: {{ .Values.req_mem }}
+          limits:
+            cpu: {{ .Values.limit_cpu }}
+            memory: {{ .Values.limit_mem }}

@@ -15,7 +15,7 @@ backend_svc_name: express-app
 frontend_svc_name: angular-app
 frontend_cont_port: 80 
 backend_cont_port: 3000  
-frontend_imageTag: suryaprasaath/sag-frontend-app:1.3
+frontend_imageTag: suryaprasaath/sag-frontend-app:1.2
 backend_imageTag: suryaprasaath/sag-backend-app:1.0
 scale_minreplicas: 1
 scale_maxreplicas: 3

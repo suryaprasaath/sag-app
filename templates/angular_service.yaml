@@ -1,0 +1,12 @@
+apiVersion: {{ .Values.service_apiversion }}
+kind: Service
+metadata:
+  name: {{ .Values.frontend_svc_name}}
+  labels:
+    app: {{ .Values.frontend_svc_name}}
+spec:
+  ports:
+    - port: {{ .Values.frontend_cont_port}}
+  selector:
+{{ toYaml .Values.frontend_labels | indent 4 }}
+  type: {{ .Values.svc_type }}
